@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+projet_manager,aouinane.projet,model_aouinane_projet,group_manager,1,1,1,1
+etudiant_manager,aouinane.etudiant,model_aouinane_etudiant,group_manager,1,1,1,1
+evaluation_manager,aouinane.evaluation,model_aouinane_evaluation,group_manager,1,1,1,1
+evaluateur_manager,aouinane.evaluateur,model_aouinane_evaluateur,group_manager,1,1,1,1
+projet_read_all,projet all,model_aouinane_projet,,1,0,0,0

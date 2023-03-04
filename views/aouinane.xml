@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+
+<!--******************************** projet ***********************************-->
+          <!--donation Management Form View-->
+       <record id="projet_view_form" model="ir.ui.view">
+        <field name="name">projet.view.form</field>
+        <field name="model">aouinane.projet</field>
+        <field name="arch" type="xml">
+       <form string="Projet">
+           <sheet>
+               <group string="Nouveau projet">
+                   <group>
+                       <field name="name"/>
+                       <field name="description"/>
+                       <field name="date_debut"/>
+                   </group>
+               </group>
+           </sheet>
+         </form>
+      </field>
+  </record>
+
+       <!--donation Management Tree View-->
+<record id="don_view_tree" model="ir.ui.view">
+   <field name="name">projet.tree</field>
+   <field name="model">aouinane.projet</field>
+   <field name="arch" type="xml">
+       <tree>
+           <field name="name" string="Projet" required="1"/>
+           <field name="description" string="Description"/>
+           <field name="date_debut" string="Date"/>
+       </tree>
+   </field>
+</record>
+
+       <!--donation Management Action-->
+       <record id="action_projet" model="ir.actions.act_window">
+   <field name="name">Projets</field>
+   <field name="res_model">aouinane.projet</field>
+   <field name="view_mode">tree,form</field>
+   <field name="help" type="html">
+       <p class="o_view_nocontent_smiling_face">
+           Creer un projet svp!
+       </p>
+   </field>
+    </record>
+
+<!--******************************** projet ***********************************-->
+
+
+<!--******************************** menu ***********************************-->
+    <!--Parent Menu School Management root-->
+    <menuitem id="aouinane_menu_root" name="Aouinane"/>
+    
+ 
+    <menuitem id="aouinane_menu" name="Menu" parent="aouinane_menu_root"/>
+ 
+
+     <!--Menu School Management-->
+
+     <menuitem id="projet_menu"
+         name="Projets"
+         parent="aouinane_menu"
+         action="action_projet"/>
+
+<!--******************************** menu ***********************************-->
+
+
+<!--******************************** Etudiant ***********************************-->
+          <!--objet Form View-->
+       <record id="etudiant_view_form" model="ir.ui.view">
+        <field name="name">etudiant.view.form</field>
+        <field name="model">aouinane.etudiant</field>
+        <field name="arch" type="xml">
+       <form string="Etudiants">
+           <sheet>
+               <group string="Nouveau etudiant">
+                   <group>
+                       <field name="matricule"/>
+                       <field name="name"/>
+                       <field name="projet_id" widget="many2one_tags"/>
+                   </group>
+               </group>
+           </sheet>
+         </form>
+      </field>
+  </record>
+
+       <!--objet Tree View-->
+<record id="etudiant_view_tree" model="ir.ui.view">
+   <field name="name">etudiant.tree</field>
+   <field name="model">aouinane.etudiant</field>
+   <field name="arch" type="xml">
+       <tree>
+           <field name="matricule" string="Matricule" required="1"/>
+           <field name="name" string="Nom_etudiant" required="1"/>
+           <field name="projet_id" widget="many2one_tags"/>
+       </tree>
+   </field>
+</record>
+
+       <!--objet Action-->
+       <record id="action_etudiant" model="ir.actions.act_window">
+   <field name="name">Etudiants</field>
+   <field name="res_model">aouinane.etudiant</field>
+   <field name="view_mode">tree,form</field>
+   <field name="help" type="html">
+       <p class="o_view_nocontent_smiling_face">
+           Creer un etudiant svp!
+       </p>
+   </field>
+    </record>
+
+    <menuitem id="etudiant_menu"
+         name="Etudiants"
+         parent="aouinane_menu"
+         action="action_etudiant"/>
+
+<!--******************************** etudiant ***********************************-->
+
+
+<!--******************************** evaluation ***********************************-->
+          <!--compagne Form View-->
+      <record id="evaluation_view_form" model="ir.ui.view">
+        <field name="name">evaluation.view.form</field>
+        <field name="model">aouinane.evaluation</field>
+        <field name="arch" type="xml">
+       <form string="Evaluations">
+           <sheet>
+               <group string="Nouveau evalation">
+                   <group>
+                       <field name="name"/>
+                       <field name="evaluateurs" widget="many2many_tags"/>
+                       <field name="appreciation"/>
+                       <field name="recommandation"/>
+                       <field name="projet_id" widget="Many2one_tags"/>
+                   </group>
+               </group>
+           </sheet>
+         </form>
+      </field>
+  </record>
+
+       <!--objet Tree View-->
+<record id="evaluation_view_tree" model="ir.ui.view">
+   <field name="name">evaluation.tree</field>
+   <field name="model">aouinane.evaluation</field>
+   <field name="arch" type="xml">
+       <tree>
+           <field name="name" string="Evaluation" required="1"/>
+           <field name="evaluateurs" widget="many2many_tags"/>
+           <field name="appreciation" string="Appreciation"/>
+           <field name="recommandation" string="Recommandation"/>
+           <field name="projet_id" widget="Many2one_tags"/>
+       </tree>
+   </field>
+</record>
+
+       <!--objet Action-->
+       <record id="action_evaluation" model="ir.actions.act_window">
+   <field name="name">Evaluations</field>
+   <field name="res_model">aouinane.evaluation</field>
+   <field name="view_mode">tree,form</field>
+   <field name="help" type="html">
+       <p class="o_view_nocontent_smiling_face">
+           Creer un evaluation svp!
+       </p>
+   </field>
+    </record>
+
+    <menuitem id="evaluation_menu"
+         name="Evaluations"
+         parent="aouinane_menu"
+         action="action_evaluation"/>
+
+
+<!--******************************** evaluation ***********************************-->
+
+
+
+<!--******************************** evaluateur ***********************************-->
+    
+    <!-- Donateur form view -->
+    <record id="evaluateur_view_form" model="ir.ui.view">
+        <field name="name">evaluateur.view.form</field>
+        <field name="model">aouinane.evaluateur</field>
+        <field name="arch" type="xml">
+       <form string="Evaluateur">
+           <sheet>
+               <group string="Nouveau evaluateur">
+                   <group>
+                       <field name="name"/>
+                       <field name="prenom"/>
+                       <field name="entreprise"/>
+                   </group>
+                   <group>
+                       <field name="evaluations" widget="Many2many_tags"/>
+                   </group>
+
+               </group>
+           </sheet>
+         </form>
+      </field>
+  </record>
+
+  <!--donateur Management Tree View-->
+    <record id="evaluateur_view_tree" model="ir.ui.view">
+   <field name="name">evaluateur.tree</field>
+   <field name="model">aouinane.evaluateur</field>
+   <field name="arch" type="xml">
+       <tree>
+            <field name="name" string="Nom_evaluateur" required="1"/>
+            <field name="prenom" string="Prenom_evaluateur" required="1"/>
+            <field name="entreprise" string="Entreprise" required="0"/>
+            <field name="evaluations" widget="Many2many_tags"/>
+       </tree>
+   </field>
+</record>
+
+
+ <!--donateur Management Action-->
+    <record id="action_evaluateur" model="ir.actions.act_window">
+        <field name="name">Evaluateur</field>
+        <field name="res_model">aouinane.evaluateur</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+           Creer un evaluateur svp!
+        </p>
+   </field>
+    </record>
+
+
+     <menuitem id="evaluateur_menu"
+         name="Evaluateurs"
+         parent="aouinane_menu"
+         action="action_evaluateur"/>
+
+<!--******************************** donateur ***********************************-->
+
+
+
+
+
+         </data>
+</odoo>
